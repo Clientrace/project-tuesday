@@ -1,0 +1,69 @@
+{
+  "app:config": {
+    "dev": {
+      "fileReplacements": [
+        {
+          "replace": "src/env/environment.cfg",
+          "with": "src/env/environment.dev.cfg"
+        }
+      ]
+    },
+    "prod": {
+      "fileReplacements": [
+        {
+          "replace": "src/env/environment.cfg",
+          "with": "src/env/environment.prod.cfg"
+        }
+      ]
+    }
+  },
+  "app:description": "Carpooling chatbot for volunteer drivers to help our medical frontliners",
+  "app:name": "tuesday",
+  "app:runtime": "python",
+  "app:stage": "dev",
+  "app:version": "1",
+  "aws:config": {
+    "dynamodb:session-table": {
+      "rcu": 5,
+      "wcu": 5
+    },
+    "iam:roles": [
+      "arn:aws:iam::aws:policy/AmazonSQSFullAccess",
+      "arn:aws:iam::aws:policy/AWSLambdaFullAccess",
+      "arn:aws:iam::aws:policy/CloudWatchFullAccess",
+      "arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess",
+      "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
+      "arn:aws:iam::aws:policy/service-role/AWSLambdaRole"
+    ],
+    "lambda:handler": "index.lambda_handler",
+    "lambda:timeout": 500,
+    "region": "ap-southeast-1"
+  },
+  "chatbot:config": {
+    "URLsToWhiteList": [],
+    "enable_menu": false,
+    "persistent_menu": {
+      "call_to_actions": [
+        {
+          "payload": "PERSIST_OPTION-1",
+          "title": "OPTION-1",
+          "type": "postback"
+        },
+        {
+          "payload": "PERSIST_OPTION-2",
+          "title": "OPTION-2",
+          "type": "postback"
+        },
+        {
+          "payload": "PERSIST_OPTION-3",
+          "title": "OPTION-3",
+          "type": "postback"
+        }
+      ],
+      "composer_input_disabled": false,
+      "locale": "default"
+    }
+  },
+  "fb:verifyToken": "8693ce72226e468c90def165f8da4d24",
+  "verbosity": true
+}

@@ -8,6 +8,7 @@ from _uxy_core.utility.common import fbtoken_verifier
 
 
 def lambda_handler(event, context):
+  print(event)
   try:
     if( event['method'] == 'GET' ):
       return fbtoken_verifier.verify(event['queryParams'], \

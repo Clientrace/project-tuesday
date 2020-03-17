@@ -12,6 +12,7 @@ from _uxy_core.utility.api_wrappers.facebook import Facebook
 def parse_string_codes(fb, string_msg):
   if( ':username:' in string_msg ):
     userName = fb.get_user_info('first_name', 'last_name')
+    print(userName)
     userName = userName['first_name']+' '+userName['last_name']
     string_msg = string_msg.replace(':username:', userName)
 
